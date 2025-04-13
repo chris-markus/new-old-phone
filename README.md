@@ -30,10 +30,11 @@ TODO: schematic
 Broadly the hardware is in two parts:
 
 - Within the phone there's an Arduino Nano, MP3 player dev board, H-bridge dev board, and a buck converter module. These are connected via a phone cable to an interface box which provides 24V power, a button contact and a potentiometer voltage output.
+  - 0-24V potentiometer output is divided by a 10k/69k voltage divider. 24V on the input -> `24V * 10k / (10k + 69k) = 3.038V` at the microcontroller. Microcontroller is safe up to `5V * (10k + 69k) / 10k = 39.5V`, well above any transients on a 24V line.
 - The interface box makes use of the 4 conductors in the phone cable as:
-  - Red: Power
-  - Black: Ground
-  - Green: 0-24V potentiometer voltage output (for controlling ring delay)
+  - Red: 24V Power.
+  - Black: Ground.
+  - Green: 0-24V potentiometer voltage output (for controlling ring delay).
   - Yellow: Button line (normally-open; floating/grounded).
 
 #### Parts
