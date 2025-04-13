@@ -10,14 +10,14 @@ When powered, the phone will wait the amount of time dictated the interface box 
 
 *Note that the phone will not ring if it is not on the hook.*
 
-## Adding Audio Files
+### Adding Audio Files
 
 1. Ensure the phone is disconnected from power.
 1. Locate and remove the microSD card from the underside of the phone.
 1. Copy the desired number of audio files onto the SD card. The phone will rotate through them each successive time it rings. Supported audio formats are: mp3, WAV, WMA at up to 48kHz.
 1. Replace the SD card and then reconnect power.
 
-## "Ring Now"
+### "Ring Now"
 
 Pressing the "Ring" button on the interface box will cause the phone to ring now if it is not currently ringing or playing back audio. If the phone is not on the hook it will skip the ring and immediately play the next audio file. After the phone is replaced on the hook, it will reset its wait timer and begin waiting to ring again.
 
