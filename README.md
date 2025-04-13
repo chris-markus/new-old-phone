@@ -29,13 +29,16 @@ TODO: schematic
 
 Broadly the hardware is in two parts:
 
-- Within the phone there's an Arduino Nano, MP3 player dev board, H-bridge dev board, and a buck converter module. These are connected via a phone cable to an interface box which provides 24V power, a button contact and a potentiometer voltage output.
-  - 0-24V potentiometer output is divided by a 10k/69k voltage divider. 24V on the input -> `24V * 10k / (10k + 69k) = 3.038V` at the microcontroller. Microcontroller is safe up to `5V * (10k + 69k) / 10k = 39.5V`, well above any transients on a 24V line.
+- Within the phone there's an Arduino Nano, MP3 playback module, H-bridge dev board, and a buck converter module. These are connected via a phone cable to an interface box which provides 24V power, a button contact and a potentiometer voltage output.
+  - Output of one channel of the MP3 playback module can be connected directly to the speaker connection for the phone's handset. If the volume is too high, a series resistor can be added on the connection.
+  - The ringer coil of my phone had 2 windings, I connected them in parallel to the same output of the H-bridge driver, experimenting with orientation until they pulled the ringer in the same direction.
+  - The H-bridge module has an onboard 5V linear regulator which **must be disabled** by removing a jumper on the board. 5V is instead fed into the module from the buck converter output.
+  - The ring delay 0-24V input is divided by a 10k/69k voltage divider before the microcontroller. 24V on the input -> `24V * 10k / (10k + 69k) = 3.038V` at the microcontroller. Microcontroller is safe up to `5V * (10k + 69k) / 10k = 39.5V`, well above any transients on a 24V line.
 - The interface box makes use of the 4 conductors in the phone cable as:
   - Red: 24V Power.
   - Black: Ground.
-  - Green: 0-24V potentiometer voltage output (for controlling ring delay).
-  - Yellow: Button line (normally-open; floating/grounded).
+  - Green: Wiper pin on "ring delay" potentiometer. High and low side of potentiometer connected to 24 and ground, respectively. Produces 0-24V signal depending on potentiometer position.
+  - Yellow: Button line (normally-open; shorts yellow wire to ground when pressed).
 
 #### Parts
 
